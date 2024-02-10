@@ -2,7 +2,7 @@ const container = document.querySelector('#container');
 const containerHeight = window.innerHeight - 18 - 37.2; // 37.2 is size of button + header div padding; 18 accounts for borders + ???
 const containerWidth =  document.body.clientWidth;
 container.style.height = `${containerHeight}px`;
-container.style.width = `${containerWidth}px`;
+container.style.width = `${containerHeight}px`;
 
 function createGrid(elementsPerSide) {
     container.innerHTML = "";
@@ -13,8 +13,9 @@ function createGrid(elementsPerSide) {
         for (let j = 0; j < elementsPerSide; j++) {
             const gridDiv = document.createElement('div');
             gridDiv.classList.add('grid');
-            //gridDiv.style.borderStyle = 'solid';
-            //gridDiv.style.borderWidth = '2px';
+            gridDiv.style.borderStyle = 'solid';
+            gridDiv.style.borderWidth = '1px';
+            gridDiv.style.borderColor = "hsl(0,0%,93%)";
             
             let luminosity = 100;
             let hue = getRandomInt(361);
@@ -41,4 +42,4 @@ resizeButton.addEventListener("click", () => {
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
-  }
+}
