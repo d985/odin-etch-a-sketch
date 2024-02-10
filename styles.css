@@ -1,11 +1,15 @@
 .grid {
-  flex-grow: 1;
+  flex-grow:1;
 }
 
 #container {
-  height:document.body.clientHeight/4;
-
   display: flex;
   flex-wrap: wrap;  
   align-items: stretch;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    padding: 8px;
 }
