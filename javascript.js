@@ -1,24 +1,28 @@
 const container = document.querySelector('#container');
 const containerHeight = window.innerHeight - 18 - 37.2; // 37.2 is size of button + header div padding; 18 accounts for borders + ???
+const containerWidth =  document.body.clientWidth;
 container.style.height = `${containerHeight}px`;
+container.style.width = `${containerWidth}px`;
 
 function createGrid(elementsPerSide) {
     container.innerHTML = "";
-    let divWidth =  document.body.clientWidth/elementsPerSide - 4;
 
-    for (let i = 0; i < elementsPerSide**2; i++) {        
-        const div = document.createElement('div');
-        div.classList.add('grid');
-        div.style.width = `${divWidth}px`;
-        div.style.borderStyle = 'solid';
-        div.style.borderWidth = '2px';
-        div.textContent = i;
+    for (let i = 0; i < elementsPerSide; i++) { 
+        const rowDiv = document.createElement('div');
+        rowDiv.classList.add('rowDiv');
+        for (let j = 0; j < elementsPerSide; j++) {
+            const gridDiv = document.createElement('div');
+            gridDiv.classList.add('grid');
+            //gridDiv.style.borderStyle = 'solid';
+            //gridDiv.style.borderWidth = '2px';
         
-        div.addEventListener("mouseover", () => {
-            div.style.backgroundColor = "black";
-        });
-        
-        container.appendChild(div);
+            gridDiv.addEventListener("mouseover", () => {
+                gridDiv.style.backgroundColor = "black";
+            });
+            
+            rowDiv.appendChild(gridDiv);
+        }
+        container.appendChild(rowDiv);
     }
 }
 
