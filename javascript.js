@@ -15,9 +15,13 @@ function createGrid(elementsPerSide) {
             gridDiv.classList.add('grid');
             //gridDiv.style.borderStyle = 'solid';
             //gridDiv.style.borderWidth = '2px';
-        
+            
+            let luminosity = 100;
+            let hue = getRandomInt(361);
+            let saturation = getRandomInt(34)*3;
             gridDiv.addEventListener("mouseover", () => {
-                gridDiv.style.backgroundColor = "black";
+                if (luminosity > 30) { luminosity -= 7; }
+                gridDiv.style.backgroundColor = `hsl(${hue},${saturation}%,${luminosity}%)`;
             });
             
             rowDiv.appendChild(gridDiv);
@@ -26,7 +30,7 @@ function createGrid(elementsPerSide) {
     }
 }
 
-createGrid(4);
+createGrid(10);
 
 const resizeButton = document.querySelector('#resizeButton');
 resizeButton.addEventListener("click", () => {
@@ -34,3 +38,7 @@ resizeButton.addEventListener("click", () => {
     if (numElements > 100) { numElements = 100 };
     createGrid(numElements);
 });
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
